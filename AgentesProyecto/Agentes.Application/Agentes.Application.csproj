@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Agentes.Domain\Agentes.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\AgentA\" />
+    <Folder Include="Services\AgentB\" />
+    <Folder Include="Services\AgentC\" />
+  </ItemGroup>
+
 </Project>
