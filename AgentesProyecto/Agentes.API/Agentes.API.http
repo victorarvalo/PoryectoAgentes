@@ -1,0 +1,6 @@
+@Agentes.API_HostAddress = http://localhost:5189
+
+GET {{Agentes.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
