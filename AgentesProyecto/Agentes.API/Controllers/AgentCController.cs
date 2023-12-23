@@ -5,7 +5,7 @@ using System.Net;
 
 namespace Agentes.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AgentCController : ControllerBase
     {

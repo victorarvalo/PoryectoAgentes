@@ -40,7 +40,8 @@ exeFun2() {
   var str = this.intStair.nativeElement.value;
   this.http.get<any>('AgentC?arg='+str).subscribe(data=>{
     this.result2.nativeElement.style.height = str;
-    this.result2.nativeElement.style.width = (str + 9) + 'px';
+    var columsn = Number(str) + 30;
+    this.result2.nativeElement.cols = columsn;
     this.result2.nativeElement.value = data.result;
   },error=>{
     console.log(error)
