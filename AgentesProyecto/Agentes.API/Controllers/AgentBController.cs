@@ -1,19 +1,17 @@
-﻿
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agentes.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AgentAController : ControllerBase
+    public class AgentBController : ControllerBase
     {
-        private readonly Agentes.Application.Services.AgentA.AgentAService _agentAService;
+        private readonly Application.Services.AgentB.AgentBService _agentBService;
 
-        public AgentAController(Application.Services.AgentA.AgentAService agentAService)
+        public AgentBController(Application.Services.AgentB.AgentBService agentBService)
         {
-            this._agentAService = agentAService;
+            _agentBService = agentBService;
         }
 
         [HttpPost]
@@ -22,11 +20,11 @@ namespace Agentes.API.Controllers
             string result = string.Empty;
             try
             {
-                result = _agentAService.GetFuncionality1(args);
+                result = _agentBService.GetFuncionality1(args);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex.Message == "!400")
+                if (ex.Message == "!400")
                 {
                     return BadRequest(ex.InnerException.Message);
                 }

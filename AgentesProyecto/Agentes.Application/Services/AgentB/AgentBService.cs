@@ -6,25 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Agentes.Application.Services.AgentA
+namespace Agentes.Application.Services.AgentB
 {
-    public class AgentAService : IFuncionality1
+    public class AgentBService : IFuncionality1
     {
-        /// <summary>
-        /// Programación de funcionalidad 1
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns>El promedio de los números o la excepción</returns>
         public String GetFuncionality1(List<string> args)
         {
             Domain.Models.RealNumbers realNumbers = new Domain.Models.RealNumbers();
             try
             {
                 //Validación de lista vacia
-                if(!realNumbers.EmptyList(args))
+                if (!realNumbers.EmptyList(args))
                 {
                     //validación de solo numeros reales en la lista
-                    if(realNumbers.AreOnlyNumbers(args))
+                    if (realNumbers.AreOnlyNumbers(args))
                     {
                         realNumbers.GetNumbers(args);
                         return getMedia(realNumbers.Values).ToString();
@@ -45,16 +40,14 @@ namespace Agentes.Application.Services.AgentA
             }
             return string.Empty;
         }
-
-
-        /// <summary>
-        /// Se obtiene el promedio de los números obtenidos
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns>Promedio de los números</returns>
-        public Double getMedia(List<Double> values)
+        public double getMedia(List<double> values)
         {
-            return values.Sum(x => x) / values.Count;
+            List<Double> proportionalInverse = new List<double>();
+            foreach(double value in values)
+            {
+                proportionalInverse.Add(1 / value);
+            }
+            return ((proportionalInverse.Count) / proportionalInverse.Sum(x => x));
         }
     }
 }
