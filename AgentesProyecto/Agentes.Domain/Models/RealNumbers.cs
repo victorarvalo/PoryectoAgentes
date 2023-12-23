@@ -11,18 +11,20 @@ namespace Agentes.Domain.Models
     {
         public List<Double> Values { get; }
         
+        public RealNumbers() {  Values = new List<Double>(); }
         /// <summary>
         /// Se obtiene la lista de números
         /// esta función se debe llamar despues de la validación con el metodo AreOnluNumbers
         /// se coloca try catch como precaución
         /// </summary>
         /// <param name="values">lista de string para obtener la lista de números</param>
-        public void GetNumbers(List<string> values)
+        public void GetNumbers(List<string> svalues)
         {
             try
             {
-                foreach (var value in Values)
+                foreach (var svalue in svalues)
                 {
+                    var value = Double.Parse(svalue.Replace(",", "."));
                     Values.Add(value);
                 }
             }
@@ -31,7 +33,7 @@ namespace Agentes.Domain.Models
                 throw new Exception(ex.Message, ex);
             }
         }
-        private bool AreOnlyNumbers(List<string> numberList)
+        public bool AreOnlyNumbers(List<string> numberList)
         {
             foreach (string value in numberList) 
             {
@@ -44,6 +46,15 @@ namespace Agentes.Domain.Models
                 }
             }
             return true;
+        }
+
+        public bool EmptyList(List<string> list)
+        {
+            if (!list.Any())
+            {
+                throw new EmptyList("La lista de números esta vacia");
+            }
+            return false;
         }
     }
 }
