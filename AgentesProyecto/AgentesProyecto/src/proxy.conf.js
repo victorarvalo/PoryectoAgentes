@@ -6,7 +6,7 @@ const PROXY_CONFIG = [
       "/AgentB",
       "/AgentC",
     ],
-    target: "https://apisumma.azurewebsites.net/",
+    target: "https://localhost:7163",
     secure: false
   }
 ]
