@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 
 namespace Agentes.API.Controllers
 {
@@ -20,6 +22,31 @@ namespace Agentes.API.Controllers
             try
             {
                 result = _agentBService.GetFuncionality1(args);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "!400")
+                {
+                    return BadRequest(ex.InnerException.Message);
+                }
+                if (ex.Message == "!500")
+                {
+                    return BadRequest(ex.InnerException.Message);
+                }
+            }
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [SwaggerOperation("Funcionality2")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.BadRequest)]
+        public IActionResult Funcionality2(string arg)
+        {
+            string result = string.Empty;
+            try
+            {
+                result = _agentBService.GetFuncionality2(arg);
             }
             catch (Exception ex)
             {
