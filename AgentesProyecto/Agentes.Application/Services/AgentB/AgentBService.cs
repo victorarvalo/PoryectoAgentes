@@ -58,6 +58,11 @@ namespace Agentes.Application.Services.AgentB
             return ((proportionalInverse.Count) / proportionalInverse.Sum(x => x));
         }
 
+        /// <summary>
+        /// Programación de funcionalidad 2
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns>String con la escalera</returns>
         public string GetFuncionality2(string str)
         {
             Domain.Models.Pyramid pyramid = new Domain.Models.Pyramid();
@@ -94,6 +99,12 @@ namespace Agentes.Application.Services.AgentB
             }
             return string.Empty;
         }
+
+        /// <summary>
+        /// Obtiene el string de la escalera
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>String con la escalera</returns>
         public string getStaircase(int number)
         {
 
@@ -107,6 +118,11 @@ namespace Agentes.Application.Services.AgentB
             return stair;
         }
 
+        /// <summary>
+        /// Agrega la cantidad de espacios del parametro de entrada
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns>string con espacios</returns>
         private string AddSpaces(int n)
         {
             string space = " ";
@@ -118,6 +134,11 @@ namespace Agentes.Application.Services.AgentB
             return output;
         }
 
+        /// <summary>
+        /// Agrega la cantidad de hash del parametro de entrada
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns>string con hash</returns>
         private string AddHash(int n)
         {
             string hash = "#";
