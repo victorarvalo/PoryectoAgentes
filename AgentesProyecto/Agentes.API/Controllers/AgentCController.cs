@@ -5,7 +5,7 @@ using System.Net;
 
 namespace Agentes.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AgentCController : ControllerBase
     {
@@ -44,10 +44,10 @@ namespace Agentes.API.Controllers
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         public IActionResult Funcionality2(string arg)
         {
-            string result = string.Empty;
+            Models.AnswerFuncionality2 answer = new Models.AnswerFuncionality2();
             try
             {
-                result = _agentCService.GetFuncionality2(arg);
+                answer.result = _agentCService.GetFuncionality2(arg);
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace Agentes.API.Controllers
                     return BadRequest(ex.InnerException.Message);
                 }
             }
-            return Ok(result);
+            return Ok(answer);
         }
     }
 
