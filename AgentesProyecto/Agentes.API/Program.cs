@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<serviceApplication.AgentA.AgentAService>();
 builder.Services.AddTransient<serviceApplication.AgentB.AgentBService>();
+builder.Services.AddTransient<serviceApplication.AgentC.AgentCService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,29 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Agentes.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AgentAController : ControllerBase
+    public class AgentCController : ControllerBase
     {
-        private readonly Agentes.Application.Services.AgentA.AgentAService _agentAService;
+        private readonly Application.Services.AgentC.AgentCService _agentCService;
 
-        public AgentAController(Application.Services.AgentA.AgentAService agentAService)
+        public AgentCController(Application.Services.AgentC.AgentCService agentCService)
         {
-            this._agentAService = agentAService;
+            _agentCService = agentCService;
         }
 
-        [HttpPost]
         public IActionResult Funcionality1([FromBody] List<string> args)
         {
             string result = string.Empty;
             try
             {
-                result = _agentAService.GetFuncionality1(args);
+                result = _agentCService.GetFuncionality1(args);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex.Message == "!400")
+                if (ex.Message == "!400")
                 {
                     return BadRequest(ex.InnerException.Message);
                 }

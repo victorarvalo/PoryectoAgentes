@@ -1,9 +1,9 @@
 ﻿using Agentes.Application.Services.Funcionality1;
 using domainExceptions = Agentes.Domain.Exceptions;
 
-namespace Agentes.Application.Services.AgentB
+namespace Agentes.Application.Services.AgentC
 {
-    public class AgentBService : IFuncionality1
+    public class AgentCService : IFuncionality1
     {
         public String GetFuncionality1(List<string> args)
         {
@@ -37,12 +37,18 @@ namespace Agentes.Application.Services.AgentB
         }
         public double getMedia(List<double> values)
         {
-            List<Double> proportionalInverse = new List<double>();
-            foreach(double value in values)
+            values.Sort();
+            //validación de cantidad de pares
+            if(values.Count % 2 == 0)
             {
-                proportionalInverse.Add(1 / value);
+                int midPosition = values.Count / 2;
+                return ((values[midPosition - 1] + values[midPosition]) / 2);
             }
-            return ((proportionalInverse.Count) / proportionalInverse.Sum(x => x));
+            else
+            {
+                int midPosition = values.Count / 2;
+                return (values[midPosition]);
+            }
         }
     }
 }

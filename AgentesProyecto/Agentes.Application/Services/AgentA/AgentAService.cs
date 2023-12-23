@@ -1,10 +1,5 @@
 ﻿using Agentes.Application.Services.Funcionality1;
 using domainExceptions = Agentes.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agentes.Application.Services.AgentA
 {
