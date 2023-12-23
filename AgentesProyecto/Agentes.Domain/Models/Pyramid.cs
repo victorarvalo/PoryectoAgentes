@@ -23,7 +23,7 @@ namespace Agentes.Domain.Models
             {
                 int n = int.Parse(str);
             }
-            catch (NotIntNumber nit)
+            catch (Exception)
             {
                 throw new NotIntNumber("El dato de entrada no es un número entero");
             }
@@ -53,7 +53,7 @@ namespace Agentes.Domain.Models
         /// <exception cref="InputLessThan1"></exception>
         public bool NotIsLessThan1(int n)
         {
-            if (n <= 0)
+            if (!(n > 0))
             {
                 throw new InputLessThan1("El número es menor a 1");
             }
