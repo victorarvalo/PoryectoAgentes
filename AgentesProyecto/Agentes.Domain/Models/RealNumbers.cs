@@ -1,4 +1,4 @@
-﻿using Agentes.Domain.Exceptions;
+﻿using Agentes.Domain.Exceptions.RealNumbers;
 
 namespace Agentes.Domain.Models
 {
@@ -7,6 +7,7 @@ namespace Agentes.Domain.Models
         public List<Double> Values { get; }
         
         public RealNumbers() {  Values = new List<Double>(); }
+
         /// <summary>
         /// Se obtiene la lista de números
         /// esta función se debe llamar despues de la validación con el metodo AreOnluNumbers
@@ -28,6 +29,13 @@ namespace Agentes.Domain.Models
                 throw new Exception(ex.Message, ex);
             }
         }
+
+        /// <summary>
+        /// Validación de solo números en la lista de entrada
+        /// </summary>
+        /// <param name="numberList"></param>
+        /// <returns>true si solo hay números</returns>
+        /// <exception cref="OnlyNumberInList">La lista de números tiene valores erroneos</exception>
         public bool AreOnlyNumbers(List<string> numberList)
         {
             foreach (string value in numberList) 
@@ -43,6 +51,12 @@ namespace Agentes.Domain.Models
             return true;
         }
 
+        /// <summary>
+        /// Validación de si la lista de entrada esta vacia
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns>false si la lista esta vacia</returns>
+        /// <exception cref="EmptyList">La lista de números esta vacia</exception>
         public bool EmptyList(List<string> list)
         {
             if (!list.Any())

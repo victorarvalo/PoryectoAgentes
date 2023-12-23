@@ -1,9 +1,11 @@
 ﻿using Agentes.Application.Services.Funcionality1;
-using domainExceptions = Agentes.Domain.Exceptions;
+using Agentes.Application.Services.Funcionality2;
+using Agentes.Domain.Exceptions.RealNumbers;
+using Agentes.Domain.Exceptions.Pyramid;
 
 namespace Agentes.Application.Services.AgentA
 {
-    public class AgentAService : IFuncionality1
+    public class AgentAService : IFuncionality1, IFuncionality2
     {
         /// <summary>
         /// Programación de funcionalidad 1
@@ -26,11 +28,11 @@ namespace Agentes.Application.Services.AgentA
                     }
                 }
             }
-            catch (domainExceptions.EmptyList el)
+            catch (EmptyList el)
             {
                 throw new Exception("!400", el);
             }
-            catch (domainExceptions.OnlyNumberInList onil)
+            catch (OnlyNumberInList onil)
             {
                 throw new Exception("!400", onil);
             }
@@ -50,6 +52,78 @@ namespace Agentes.Application.Services.AgentA
         public Double getMedia(List<Double> values)
         {
             return values.Sum(x => x) / values.Count;
+        }
+
+
+        public string GetFuncionality2(string str)
+        {
+            Domain.Models.Pyramid pyramid = new Domain.Models.Pyramid();
+            try
+            {
+                if (pyramid.IsIntNumber(str))
+                {
+                    int value = int.Parse(str);
+                    if (pyramid.NotIsGreaterThan99(value))
+                    {
+                        if (pyramid.NotIsLessThan1(value))
+                        {
+                            pyramid.pyramidString = getStaircase(value);
+                            return pyramid.pyramidString;
+                        }
+                    }
+                }
+            }
+            catch(NotIntNumber nit)
+            {
+                throw new Exception("!400", nit);
+            }
+            catch(InputGraterThan99 igt99)
+            {
+                throw new Exception("!400", igt99);
+            }
+            catch(InputLessThan1 ilt1)
+            {
+                throw new Exception("!400", ilt1);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("!500", ex);
+            }
+            return string.Empty;
+        }
+        public string getStaircase(int number)
+        {
+            
+            string stair = String.Empty;
+            for(int x = (number - 1); x >= 0 ; x--)
+            {
+                stair += AddSpaces(x);
+                stair += AddHash(number - x);
+                stair += "\n\r";
+            }
+            return stair;
+        }
+
+        private string AddSpaces(int n)
+        {
+            string space = " ";
+            string output = string.Empty;
+            for(int x = 0; x < n;x++)
+            {
+                output += space;
+            }
+            return output;
+        }
+
+        private string AddHash(int n)
+        {
+            string hash = "#";
+            string output = string.Empty;
+            for (int x = 0; x < n; x++)
+            {
+                output += hash;
+            }
+            return output;
         }
     }
 }

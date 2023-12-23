@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Agentes.Domain\Agentes.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\AgentC\" />
-  </ItemGroup>
-
 </Project>

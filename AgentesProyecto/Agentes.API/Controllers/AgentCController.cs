@@ -14,6 +14,7 @@ namespace Agentes.API.Controllers
             _agentCService = agentCService;
         }
 
+        [HttpPost]
         public IActionResult Funcionality1([FromBody] List<string> args)
         {
             string result = string.Empty;
