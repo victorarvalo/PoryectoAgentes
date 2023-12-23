@@ -1,0 +1,58 @@
+<div class="container" style="background-color:lightgray;">
+    <div class="row justify-content-md-center">
+        <div class="col"><h2>Agente A Funcionalidad 1</h2></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <p>Ingresa los números para ejecutar la Funcionalidad</p>
+            <textarea rows="5" placeholder="Ej: 1 o 1.5 o 1,5"  #inputNumbers></textarea>
+            <br>
+            <button class="btn btn-success btn-sm" (click)="getNumbers()">Capturar Números</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-success btn-sm">Genera 10 Números Aleatorios</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <p>Lista de Números</p>
+            <input type="text" disabled #numberList>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col"><button class="btn btn-success btn-sm" (click)="exeFun1()">Ejecutar Funcionalidad 1</button></div>
+    </div>
+    <br>
+    <div class="row justify-content-lg-center">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <textarea #result1 disabled></textarea>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<br><br>
+<div class="container" style="background-color: aquamarine;">
+    <div class="row">
+        <div class="col"><h2>Agente A Funcionalidad 2</h2></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Ingresa los números para ejecutar la Funcionalidad</p>
+            <input type="text" #intStair>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col"><button class="btn btn-success btn-sm" (click)="exeFun2()">Ejecutar Funcionalidad 2</button></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <textarea #result2 disabled style="text-align: center;" ></textarea>
+        </div>
+    </div>
+</div>

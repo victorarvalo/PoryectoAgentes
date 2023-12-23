@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
+using System.Text.Json.Serialization;
 
 namespace Agentes.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AgentAController : ControllerBase
     {
@@ -46,10 +48,10 @@ namespace Agentes.API.Controllers
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         public IActionResult Funcionality2(string arg)
         {
-            string result = string.Empty;
+            Models.AnswerFuncionality2 answer = new Models.AnswerFuncionality2();
             try
             {
-                result = _agentAService.GetFuncionality2(arg);
+                answer.result = _agentAService.GetFuncionality2(arg);
             }
             catch (Exception ex)
             {
@@ -62,7 +64,7 @@ namespace Agentes.API.Controllers
                     return BadRequest(ex.InnerException.Message);
                 }
             }
-            return Ok(result);
+            return Ok(answer);
         }
     }
 }
